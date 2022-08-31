@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 
-class NotificationBroadcastReceiver : BroadcastReceiver() {
+class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        showNotification(context)
+        if (intent.action == "android.intent.action.BOOT_COMPLETED") {
+            runAlarm(context)
+        }
     }
 }

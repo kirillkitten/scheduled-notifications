@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
         }
 
         createNotificationChannel(this)
-        saveAlarm(this, 10)
+        saveAlarm(this, 160)
         runAlarm(this)
     }
 }
