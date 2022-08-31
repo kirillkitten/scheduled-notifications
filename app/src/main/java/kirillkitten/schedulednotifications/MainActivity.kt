@@ -2,6 +2,9 @@ package kirillkitten.schedulednotifications
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -54,11 +57,22 @@ class MainActivity : ComponentActivity() {
 
     private fun showNotification(){
         val id = 1
+
+        val url = "https://ru.wikipedia.org/"
+        val intent = Intent(Intent.ACTION_VIEW).setData(Uri.parse(url))
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle("1")
-            .setContentText("ru.wikipedia.org")
+            .setContentText("Wikipedia")
             .setPriority(NotificationCompat.PRIORITY_MAX)
+            .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .build()
         NotificationManagerCompat.from(this).notify(id, notification)
