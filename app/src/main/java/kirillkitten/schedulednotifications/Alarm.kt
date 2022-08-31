@@ -5,22 +5,32 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.getSystemService
+import timber.log.Timber
 
-fun runAlarm(context: Context) {
+const val ALARM_ID_KEY = "ALARM_ID"
+
+fun runAlarms(context: Context) {
+    for (id in 1..3) {
+        if (getAlarmTime(id, context) != 0L) runAlarm(id, context)
+    }
+}
+
+fun runAlarm(id: Int, context: Context) {
+    Timber.i("runAlarm is invoked")
     val alarmIntent = Intent(context, NotificationBroadcastReceiver::class.java)
         .setFlags(Intent.FLAG_RECEIVER_FOREGROUND)
-        .let { intent ->
-            PendingIntent.getBroadcast(
-                context,
-                0,
-                intent,
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-            )
+        .apply {
+            putExtra(ALARM_ID_KEY, id)
         }
-//    context.getSystemService<AlarmManager>()?.setExactAndAllowWhileIdle(
-//        AlarmManager.RTC_WAKEUP,
-//        getAlarmTime(context),
-//        alarmIntent
-//    )
-    context.getSystemService<AlarmManager>()?.setAlarmClock(AlarmManager.AlarmClockInfo(getAlarmTime(context), alarmIntent), alarmIntent)
+    val alarmPendingIntent = PendingIntent.getBroadcast(
+        context,
+        id,
+        alarmIntent,
+        PendingIntent.FLAG_IMMUTABLE
+    )
+    context.getSystemService<AlarmManager>()?.setExactAndAllowWhileIdle(
+        AlarmManager.RTC_WAKEUP,
+        getAlarmTime(id, context),
+        alarmPendingIntent
+    )
 }

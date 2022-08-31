@@ -40,8 +40,10 @@ class MainActivity : ComponentActivity() {
             }
         }
 
-        saveAlarm(this, 90)
-        runAlarm(this)
+        saveAlarm(1,this, 10)
+        saveAlarm(2,this, 20)
+        saveAlarm(3,this, 30)
+        runAlarms(this)
     }
 
     private fun grantScheduleAlarmPermission() {

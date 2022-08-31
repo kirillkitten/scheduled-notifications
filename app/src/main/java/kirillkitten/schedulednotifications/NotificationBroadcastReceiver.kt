@@ -8,6 +8,7 @@ import timber.log.Timber
 class NotificationBroadcastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         Timber.i("onReceive function is invoked")
-        showNotification(context)
+        val id = intent.getIntExtra(ALARM_ID_KEY, 0)
+        showNotification(id, context)
     }
 }
