@@ -4,10 +4,9 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.SystemClock
 import androidx.core.content.getSystemService
 
-fun runAlarm(context: Context, notifyInSeconds: Int) {
+fun runAlarm(context: Context) {
     val alarmIntent = Intent(context, NotificationBroadcastReceiver::class.java)
         .let { intent ->
             PendingIntent.getBroadcast(
@@ -18,8 +17,8 @@ fun runAlarm(context: Context, notifyInSeconds: Int) {
             )
         }
     context.getSystemService<AlarmManager>()?.set(
-        AlarmManager.ELAPSED_REALTIME_WAKEUP,
-        SystemClock.elapsedRealtime() + notifyInSeconds * 1000,
+        AlarmManager.RTC_WAKEUP,
+        getAlarmTime(context),
         alarmIntent
     )
 }
