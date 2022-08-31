@@ -1,11 +1,13 @@
 package kirillkitten.schedulednotifications
 
 import android.content.Context
+import timber.log.Timber
 
 private const val PREFERENCES_KEY = "PREFERENCES"
 private const val ALARM_KEY = "ALARM_1"
 
 fun saveAlarm(context: Context, notifyInSeconds: Int) {
+    Timber.i("saveAlarm function is invoked")
     val sharedPref = context.getSharedPreferences(PREFERENCES_KEY, Context.MODE_PRIVATE)
     with(sharedPref.edit()) {
         putLong(
