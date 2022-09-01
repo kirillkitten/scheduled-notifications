@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -42,6 +43,7 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 ) {
                     var text1 by remember { mutableStateOf("") }
@@ -51,7 +53,10 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(bottom = 16.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(text = "Show Google in")
+                        Text(
+                            text = "Show Google in",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                         OutlinedTextField(
                             modifier = Modifier
                                 .padding(horizontal = 8.dp)
@@ -60,13 +65,19 @@ class MainActivity : ComponentActivity() {
                             onValueChange = { text1 = it },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
-                        Text("seconds")
+                        Text(
+                            text = "seconds",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                     Row(
                         modifier = Modifier.padding(bottom = 16.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Text(text = "Show Wikipedia in")
+                        Text(
+                            text = "Show Wikipedia in",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                         OutlinedTextField(
                             modifier = Modifier
                                 .padding(horizontal = 8.dp)
@@ -75,10 +86,16 @@ class MainActivity : ComponentActivity() {
                             onValueChange = { text2 = it },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
-                        Text("seconds")
+                        Text(
+                            text = "seconds",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "Show Telegram in")
+                        Text(
+                            text = "Show Telegram in",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                         OutlinedTextField(
                             modifier = Modifier
                                 .padding(horizontal = 8.dp)
@@ -87,9 +104,12 @@ class MainActivity : ComponentActivity() {
                             onValueChange = { text3 = it },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                         )
-                        Text("seconds")
+                        Text(
+                            text = "seconds",
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
                     }
-                    Row(modifier = Modifier.padding(top = 24.dp),) {
+                    Row(modifier = Modifier.padding(top = 24.dp)) {
                         Button(
                             onClick = {
                                 if (text1.isNotEmpty()) {
