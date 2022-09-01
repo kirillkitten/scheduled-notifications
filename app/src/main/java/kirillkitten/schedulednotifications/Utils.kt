@@ -3,7 +3,7 @@ package kirillkitten.schedulednotifications
 import android.content.Context
 import timber.log.Timber
 
-private const val PREFERENCES_KEY = "PREFERENCES"
+const val PREFERENCES_KEY = "PREFERENCES"
 private const val ALARM_1_KEY = "ALARM_1"
 private const val ALARM_2_KEY = "ALARM_2"
 private const val ALARM_3_KEY = "ALARM_3"
