@@ -1,8 +1,10 @@
-package kirillkitten.schedulednotifications
+package kirillkitten.schedulednotifications.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import kirillkitten.schedulednotifications.utils.ALARM_ID_KEY
+import kirillkitten.schedulednotifications.utils.showNotification
 import timber.log.Timber
 
 class NotificationBroadcastReceiver : BroadcastReceiver() {

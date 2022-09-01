@@ -1,4 +1,4 @@
-package kirillkitten.schedulednotifications
+package kirillkitten.schedulednotifications.utils
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,6 +10,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
+import kirillkitten.schedulednotifications.R
 
 private const val CHANNEL_ID = "kirillkitten.schedulednotifications.DEFAULT_CHANNEL_ID"
 
